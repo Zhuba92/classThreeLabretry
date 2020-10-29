@@ -1,56 +1,59 @@
-function calculateLateFees()
-{
-// Get number of books and convert to number
-    var numberOfBooks = parseInt(prompt("How many books do you have?"));
+$(document).ready(
+    function () {
+        $("#lateFeeButton").click(calculateLateFees);
+        $("#alertButton").click(showPopup);
+        $("#totalPerPerson").click(calculatePizzaCost);
+        $("#alertButtonTwo").click(showPopup);
 
-// Get number of DVDS and convert to number
-    var numberOfDvds = parseInt(prompt("How many DVDs do you have?"));
+        function calculateLateFees()
+        {
+            // Get number of books and convert to number
+            var numberOfBooks = $("#numberOfBooks").val();
+            numberOfBooks = parseInt(numberOfBooks);
 
-// Get number of days late for books and convert to number
-    var numberOfDaysLateBooks = parseInt(prompt("How many days late are your books?"));
+            // Get number of DVDS and convert to number
+            var numberOfDvds = $("#numberOfDvds").val();
+            numberOfDvds = parseInt(numberOfDvds);
 
-// Get number of days late for DVDS and convert to number
-    var numberOfDaysLateDvds = parseInt(prompt("How many days late are your DVDs?"))
+            // Get number of days late for books and convert to number
+            var numberOfDaysLateBooks = $("#numberOfDaysLateBooks").val();
+            numberOfDaysLateBooks = parseInt(numberOfDaysLateBooks);
 
-// numberOfBooks * numberOfDaysLateBooks * $0.25
-    var totalBooksLateCost = numberOfBooks * (numberOfDaysLateBooks * 0.25);
-    var totalBooksLateCostDisplay = totalBooksLateCost.toFixed(2)
+            // Get number of days late for DVDS and convert to number
+            var numberOfDaysLateDvds = $("#numberOfDaysLateDvds").val();
+            numberOfDaysLateDvds = parseInt(numberOfDaysLateDvds);
 
-// numberOfDvds * numberOfDaysLateDvds * $0.50
-    var totalDvdsLateCost = numberOfDvds * (numberOfDaysLateDvds * 0.50);
-    var totalDvdsLateCostDisplay = totalDvdsLateCost.toFixed(2);
+            // numberOfBooks * numberOfDaysLateBooks * $0.25
+            var totalBooksLateCost = numberOfBooks * (numberOfDaysLateBooks * 0.25);
 
-// Display totalOfLateBooks
-    alert(`Your total for late books is $${totalBooksLateCostDisplay}`);
-// Display totalOfLateDvds
-    alert(`Your total for late DVDS is $${totalDvdsLateCostDisplay}`);
-}
+            // numberOfDvds * numberOfDaysLateDvds * $0.50
+            var totalDvdsLateCost = numberOfDvds * (numberOfDaysLateDvds * 0.50);
+            var totalCostDisplay = (totalBooksLateCost + totalDvdsLateCost);
+
+            $("#totalOutputCost").text(totalCostDisplay.toFixed(2));
+        }
+
+        function calculatePizzaCost()
+        {
+            // Get number of toppings and convert to number
+            var numberOfToppings = $("#numberOfToppings").val();
+            numberOfToppings = parseInt(numberOfToppings);
+
+            // Get number of people sharing the pizza and convert to number
+            var numberOfPeople = $("#numberOfPeople").val();
+            numberOfPeople = parseInt(numberOfPeople);
+
+            // Add $15.00 plus (number of toppings * $1.25) and divide by number of people sharing pizza
+            var totalCostPerPerson = (15 + (numberOfToppings * 1.25)) / numberOfPeople;
+
+            $("#totalOutputCostPerPerson").text(totalCostPerPerson.toFixed(2));
+        }
+
+        function showPopup()
+        {
+            $(".output").show();
+        }
 
 
-function calculatePizzaCost()
-{
-// Get number of toppings and convert to number
-    var numberOfToppings = parseInt(prompt("How many toppings do you want?"));
-
-// Get number of people sharing the pizza and convert to number
-    var numberOfPeople = parseInt(prompt("How many people are sharing the pizza?"));
-
-// Add $15.00 plus (number of toppings * $1.25) and divide by number of people sharing pizza
-    var totalCostPerPerson = (15 + (numberOfToppings * 1.25)) / numberOfPeople;
-    var totalCostPerPersonDisplay = totalCostPerPerson.toFixed(2);
-
-// Display cost per person
-    alert(`The total cost per person is $${totalCostPerPersonDisplay}`);
-}
-
-// Click tracker Lab-----------------------------------------------------
-var count = 0;
-function addToClickTotal()
-{
-    count++
-}
-
-function displayNumberOfClicks()
-{
-    alert(count);
-}
+    }
+);

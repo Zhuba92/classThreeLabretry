@@ -3,19 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Late Fee Calculator and Pizza Cost Per Person Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="code.js"></script>
+    <style>
+        .output
+        {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
     <h1>Late Fee Calculator!</h1>
-    <button onclick="calculateLateFees()">Calculate Late Fee</button>
+    <label for="numberOfBooks">Number of books</label>
+    <input type="number" id="numberOfBooks"><br><br>
+
+    <label for="numberOfDvds">Number of DVDs</label>
+    <input type="number" id="numberOfDvds"><br><br>
+
+    <label for="numberOfDaysLateBooks">Number of days late for books</label>
+    <input type="number" id="numberOfDaysLateBooks"><br><br>
+
+    <label for="numberOfDaysLateDvds">Number of days late for DVDs</label>
+    <input type="number" id="numberOfDaysLateDvds"><br><br>
+
+    <button id="lateFeeButton">Calculate late fees</button><br><br>
+    <button id="alertButton">Show totals</button>
+    <p class="output">Your late fees will cost $<span id="totalOutputCost">Place-holder</span> dollars.</p>
+
+
 
     <h1>Cost Per Person For Pizza!</h1>
-    <button onclick="calculatePizzaCost()">Calculate Cost Per Person</button>
+    <label for="numberOfToppings">Number of toppings</label>
+    <input type="number" id="numberOfToppings"><br><br>
 
-    <h1>Click Tracker</h1>
-    <button onclick="addToClickTotal()">CLick this to add to the count</button><br><br>
-    <button onclick="displayNumberOfClicks()">Click this to display the total number of clicks</button>
+    <label for="numberOfPeople">Number of people</label>
+    <input type="number" id="numberOfPeople"><br><br>
+
+    <button id="totalPerPerson">Calculate total</button><br><br>
+    <button id="alertButtonTwo">Show totals</button>
+    <p class="output">Your total per person is $<span id="totalOutputCostPerPerson">Place-holder</span> dollars.</p>
+
 
 </body>
 </html>
